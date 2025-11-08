@@ -1,4 +1,17 @@
-# Getting Started with Create React App
+# Phrase Board App
+
+Save your favorite phrases on this board. Click on them to remove whenever you want.
+
+Main features:
+-Add phrases
+-Search phrases
+-Delete phrases
+-Clear all phrases
+-Fetch lorem phrases
+-Responsive design
+-Local persistence
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -24,7 +24,7 @@ export default function PhraseControls() {
       />
       <Button onClick={onAddPhrase}>Add phase</Button>
       <Button type="outline" onClick={populatePhrases}>
-        Inspiration
+        Add Lorem
       </Button>
       <Button type="outline" onClick={clearPhrases}>
         Clear all
