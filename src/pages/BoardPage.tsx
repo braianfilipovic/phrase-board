@@ -6,7 +6,7 @@ import useDebounce from "../hooks/useDebounce.ts";
 import { useInput } from "../hooks/useInput.ts";
 import { usePhrases } from "../hooks/usePhrases.ts";
 import { useLoading } from "../hooks/useLoading.ts";
-import { usePhraseFilter } from "../hooks/usePhraseFilter.ts";
+import { usePhrasesFilter } from "../hooks/usePhrasesFilter.ts";
 
 export default function BoardPage() {
   const { loading } = useLoading();
@@ -14,7 +14,7 @@ export default function BoardPage() {
   const { input } = useInput();
   const debouncedInput = useDebounce(input, 600);
   const searchTerm = input === "" ? "" : debouncedInput;
-  const phrasesFiltered = usePhraseFilter(phrases, searchTerm, input);
+  const phrasesFiltered = usePhrasesFilter(phrases, searchTerm, input);
 
   return (
     <div className={styles.root}>

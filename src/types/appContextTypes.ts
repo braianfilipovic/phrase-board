@@ -2,7 +2,7 @@ import { PhraseAction } from "./phraseTypes";
 
 export type Phrase = {
   id: string;
-  phrase: string;
+  text: string;
 };
 
 export interface AppContextType {

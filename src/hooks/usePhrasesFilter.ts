@@ -1,24 +1,44 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { AppContext } from "../store/context/AppContext.tsx";
 import { useLoading } from "./useLoading.ts";
 import { Phrase } from "../types/appContextTypes.ts";
 import { filterByText } from "../utils/filterByText.ts";
 
-export function usePhraseFilter(
+export function usePhrasesFilter(
   phrases: Phrase[],
   text: string,
   input: string
 ) {
   const context = useContext(AppContext);
   if (!context) {
-    throw new Error("usePhraseFilter must be used within an AppProvider");
+    throw new Error("usePhrasesFilter must be used within an AppProvider");
   }
 
   const { setLoading } = useLoading();
+  const noResultsTextRef = useRef<string | null>("");
 
   const phrasesFiltered = useMemo(() => {
-    if (!text.trim()) return phrases;
-    return filterByText(phrases, text, (phrase) => phrase.phrase);
+    const trimmed = text.trim();
+
+    //Empty text, return all phrases.
+    if (!trimmed) {
+      noResultsTextRef.current = null;
+      return phrases;
+    }
+
+    //If the previous text was a prefix of the current one and the previous result was empty, there’s no need to filter again.
+    if (
+      noResultsTextRef.current &&
+      trimmed.startsWith(noResultsTextRef.current)
+    ) {
+      return [];
+    }
+
+    const result = filterByText(phrases, trimmed, (p) => p.text);
+    if (result.length === 0) {
+      noResultsTextRef.current = trimmed;
+    }
+    return result;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phrases.length, text]);
 

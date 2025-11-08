@@ -17,13 +17,9 @@ export function usePhrases() {
   const { setLoading } = useLoading();
 
   const addPhrase = (input: string) => {
-    if (!input.trim()) {
-      toast("The input is empty!");
-      return;
-    }
     dispatch({
       type: "ADD",
-      payload: { id: generateId(), phrase: input },
+      payload: { id: generateId(), text: input },
     });
     toast("Phrase added");
   };

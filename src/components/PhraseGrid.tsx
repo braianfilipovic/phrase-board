@@ -10,7 +10,7 @@ export default function PhraseGrid({ phrases = [] }: OwnProps) {
   return (
     <section className={styles.cardContainer}>
       {phrases.map((phrase: Phrase) => (
-        <PhraseCard key={phrase.id} id={phrase.id} text={phrase.phrase} />
+        <PhraseCard key={phrase.id} id={phrase.id} text={phrase.text} />
       ))}
     </section>
   );
