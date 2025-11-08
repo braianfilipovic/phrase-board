@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { getPhrases } from "../api/api.ts";
 import { useIdGenerator } from "./useIdGenerator.ts";
 import { Phrase } from "../types/appContextTypes.ts";
+import { useLoading } from "./useLoading.ts";
 
 export function usePhrases() {
   const context = useContext(AppContext);
@@ -11,7 +12,9 @@ export function usePhrases() {
     throw new Error("usePhrases must be used within an AppProvider");
   }
   const { phrases, dispatch } = context;
+
   const generateId = useIdGenerator();
+  const { setLoading } = useLoading();
 
   const addPhrase = (input: string) => {
     if (!input.trim()) {
@@ -45,6 +48,7 @@ export function usePhrases() {
   };
 
   const populatePhrases = async () => {
+    setLoading(true);
     try {
       const phrases: Phrase[] = await getPhrases();
       const phrasesWithCustomId = phrases.map((phrase) => ({
@@ -59,6 +63,7 @@ export function usePhrases() {
     } catch (error) {
       toast("Failed loading lorem phrases");
     }
+    setLoading(false);
   };
 
   return { phrases, addPhrase, removePhrase, clearPhrases, populatePhrases };
