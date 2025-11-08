@@ -3,7 +3,7 @@ import { AppContext } from "../store/context/AppContext.tsx";
 import { toast } from "react-toastify";
 import { getPhrases } from "../api/api.ts";
 import { useIdGenerator } from "./useIdGenerator.ts";
-import { Phrase } from "../store/types/appContextTypes.ts";
+import { Phrase } from "../types/appContextTypes.ts";
 
 export function usePhrases() {
   const context = useContext(AppContext);

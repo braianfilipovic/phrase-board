@@ -1,4 +1,4 @@
-import { PhraseAction, PhraseState } from "../types/phraseTypes";
+import { PhraseAction, PhraseState } from "../../types/phraseTypes";
 
 export function phraseReducer(
   state: PhraseState,
@@ -8,7 +8,6 @@ export function phraseReducer(
     case "POPULATE":
       return [...action.payload, ...state];
     case "ADD":
-      if (!action.payload.phrase.trim()) return state;
       return [action.payload, ...state];
     case "REMOVE":
       return state.filter((phrase) => phrase.id !== action.payload);

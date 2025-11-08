@@ -1,19 +1,17 @@
 import React from "react";
 import styles from "./PhraseCard.module.css";
+import { usePhrases } from "../hooks/usePhrases.ts";
 
 type OwnProps = {
   id: string;
   text: string;
-  onRemove?: (id: string) => void;
 };
 
-const PhraseCard = React.memo(function PhraseCard({
-  id,
-  text,
-  onRemove,
-}: OwnProps) {
+const PhraseCard = React.memo(function PhraseCard({ id, text }: OwnProps) {
+  const { removePhrase } = usePhrases();
+
   return (
-    <div className={styles.card} onClick={() => onRemove?.(id)}>
+    <div className={styles.card} onClick={() => removePhrase?.(id)}>
       <p>{text}</p>
     </div>
   );

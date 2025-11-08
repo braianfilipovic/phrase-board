@@ -1,4 +1,4 @@
-import { Phrase } from "../store/types/appContextTypes";
+import { Phrase } from "../types/appContextTypes";
 
 export const API_URL =
   "https://690d6caca6d92d83e851763d.mockapi.io/api/phrase-board";
