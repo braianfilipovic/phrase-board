@@ -3,10 +3,8 @@ import { AppContext } from "../store/context/AppContext.tsx";
 import { toast } from "react-toastify";
 import { getPhrases } from "../api/api.ts";
 import { useIdGenerator } from "./useIdGenerator.ts";
-export type Phrase = {
-  id: string;
-  phrase: string;
-};
+import { Phrase } from "../store/types/appContextTypes.ts";
+
 export function usePhrases() {
   const context = useContext(AppContext);
   if (!context) {
@@ -16,6 +14,10 @@ export function usePhrases() {
   const generateId = useIdGenerator();
 
   const addPhrase = (input: string) => {
+    if (!input.trim()) {
+      toast("The input is empty!");
+      return;
+    }
     dispatch({
       type: "ADD",
       payload: { id: generateId(), phrase: input },
@@ -32,6 +34,10 @@ export function usePhrases() {
   };
 
   const clearPhrases = () => {
+    if (!phrases.length) {
+      toast("Nothing to clear");
+      return;
+    }
     dispatch({
       type: "CLEAR",
     });

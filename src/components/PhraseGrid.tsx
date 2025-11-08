@@ -10,8 +10,8 @@ import { Phrase } from "../store/types/appContextTypes.ts";
 export default function PhraseGrid() {
   const { phrases, removePhrase } = usePhrases();
   const { input } = useInput();
-  const debouncedInput = useDebounce(input, 700);
-
+  const debouncedInput = useDebounce(input, 700, "");
+  
   const phrasesFiltered = useMemo(() => {
     if (!debouncedInput.trim()) return phrases;
     return filterByText(phrases, debouncedInput, (phrase) => phrase.phrase);

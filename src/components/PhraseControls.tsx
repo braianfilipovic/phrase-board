@@ -7,10 +7,12 @@ import Button from "./Button.tsx";
 export default function PhraseControls() {
   const { input, setInput } = useInput();
   const { addPhrase, clearPhrases, populatePhrases } = usePhrases();
+
   const onAddPhrase = () => {
-    addPhrase(input);
     setInput("");
+    addPhrase(input);
   };
+
   return (
     <div className={styles.searchContainter}>
       <Input
@@ -25,7 +27,7 @@ export default function PhraseControls() {
         Inspiration
       </Button>
       <Button type="outline" onClick={clearPhrases}>
-        Clean all
+        Clear all
       </Button>
     </div>
   );

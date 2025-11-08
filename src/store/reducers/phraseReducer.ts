@@ -6,10 +6,10 @@ export function phraseReducer(
 ): PhraseState {
   switch (action.type) {
     case "POPULATE":
-      return [...state, ...action.payload];
+      return [...action.payload, ...state];
     case "ADD":
       if (!action.payload.phrase.trim()) return state;
-      return [...state, action.payload];
+      return [action.payload, ...state];
     case "REMOVE":
       return state.filter((P) => P.phrase !== action.payload);
     case "CLEAR":
