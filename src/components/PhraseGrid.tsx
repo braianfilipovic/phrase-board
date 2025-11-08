@@ -11,7 +11,7 @@ export default function PhraseGrid() {
   const { phrases, removePhrase } = usePhrases();
   const { input } = useInput();
   const debouncedInput = useDebounce(input, 700, "");
-  
+
   const phrasesFiltered = useMemo(() => {
     if (!debouncedInput.trim()) return phrases;
     return filterByText(phrases, debouncedInput, (phrase) => phrase.phrase);
@@ -23,6 +23,7 @@ export default function PhraseGrid() {
       {phrasesFiltered.map((phrase: Phrase) => (
         <PhraseCard
           key={phrase.id}
+          id={phrase.id}
           text={phrase.phrase}
           onRemove={removePhrase}
         />

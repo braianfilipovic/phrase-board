@@ -11,7 +11,7 @@ export function phraseReducer(
       if (!action.payload.phrase.trim()) return state;
       return [action.payload, ...state];
     case "REMOVE":
-      return state.filter((P) => P.phrase !== action.payload);
+      return state.filter((phrase) => phrase.id !== action.payload);
     case "CLEAR":
       return [];
     default:
