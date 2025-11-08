@@ -1,0 +1,15 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
+  justify-content: center;
+  justify-items: start;
+  gap: 2rem;
+  padding: 2.5rem 4rem;
+}
+
+@media (max-width: 768px) {
+  .cardContainer {
+    padding: 2rem 1rem;
+    grid-template-columns: 1fr;
+  }
+}

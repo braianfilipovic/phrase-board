@@ -1,0 +1,12 @@
+:root {
+  --color-primary: #2e7b9a;
+  --color-primary-light: #3cb8e9;
+  --color-primary-dark: #225a72;
+  --color-primary-translucent: #2e7b9a23;
+  --color-text: white;
+  --color-gray: #c5c5c5;
+  --color-input-bg: #262c36;
+  --color-header-bg: #25292e;
+  --breakpoint-sm: 480px;
+
+}
