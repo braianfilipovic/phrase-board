@@ -1,15 +1,16 @@
 # Phrase Board App
 
-Save your favorite phrases on this board. Click on them to remove whenever you want.
+A simple, responsive app to save, search, and manage your favorite phrases.
 
 Main features:
--Add phrases
--Search phrases
--Delete phrases
--Clear all phrases
--Fetch lorem phrases
--Responsive design
--Local persistence
+
+- Add phrases
+- Search phrases
+- Delete phrases
+- Clear all phrases
+- Fetch lorem phrases
+- Responsive design
+- Local persistence
 
 ---
 
