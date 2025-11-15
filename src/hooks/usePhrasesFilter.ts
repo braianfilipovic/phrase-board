@@ -14,7 +14,7 @@ export function usePhrasesFilter(
     throw new Error("usePhrasesFilter must be used within an AppProvider");
   }
 
-  const { setLoading } = useLoading();
+  const { loading, setLoading } = useLoading();
   const noResultsTextRef = useRef<string | null>("");
 
   const phrasesFiltered = useMemo(() => {
@@ -43,7 +43,7 @@ export function usePhrasesFilter(
   }, [phrases.length, text]);
 
   useEffect(() => {
-    if (phrases.length && input) {
+    if (!loading && phrases.length && input) {
       setLoading(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
